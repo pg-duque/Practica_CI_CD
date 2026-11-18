@@ -1,6 +1,6 @@
 name: Hola Actions
 
-on: 
+on:
   push:
   workflow_dispatch:
 
