@@ -25,9 +25,9 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
       - name: Probar Lint
-        run: eslint .
+        run: npm run lint
       - name: Probar Formato
-        run: prettier --check .
+        run: npm run format:check
       - name: Probar tests unitarios
-        run: node --test test/unit/*.test.js
+        run: npm run test:unit
       # TODO: tres steps distintos: lint, format:check y test:unit
