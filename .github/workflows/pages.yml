@@ -26,7 +26,7 @@ jobs:
       - name: validar especificaciones
         run: npm run openapi:lint
       - name: Generar documentación
-        run: npm run docs
+        run: npm run docs:build
       - name: Montar carpeta site/
         run: |
           mkdir -p site/api
