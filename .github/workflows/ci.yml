@@ -32,22 +32,22 @@ jobs:
         run: npm run test:unit
       # TODO: tres steps distintos: lint, format:check y test:unit
   integration:
-  needs: quality
-  runs-on: ubuntu-latest
-  timeout-minutes: 20
-  steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version-file: .nvmrc
-        cache: npm
-    - run: npm ci
-    - uses: actions/upload-artifact@v4
-      with:
-        name: coverage-report
-        path: coverage/
-        if : always()
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+          if : always()
 
-    # TODO: ejecutar npm run coverage
-    # TODO: guardar coverage/ usando actions/upload-artifact@v4
-    # TODO: que el artefacto se guarde incluso si las pruebas fallan
+      # TODO: ejecutar npm run coverage
+      # TODO: guardar coverage/ usando actions/upload-artifact@v4
+      # TODO: que el artefacto se guarde incluso si las pruebas fallan
