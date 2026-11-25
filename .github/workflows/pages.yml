@@ -23,23 +23,25 @@ jobs:
           cache: npm
       - name: Instalar dependencias
         run: npm ci
-      - name: validar especificaciones
+      - name: Validar especificaciones
         run: npm run openapi:lint
       - name: Generar documentación
         run: npm run docs:build
       - name: Montar carpeta site/
         run: |
           mkdir -p site/api
-          cp site-src/index.html site/
-          cp -r docs/* site/api/
+          cp site-src/index.html site/index.html
+          cp dist/docs/index.html site/api/index.html
       - name: Subir site como artefacto de Pages
         uses: actions/upload-pages-artifact@v4
         with:
           path: site/
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pages: write
       id-token: write
     environment:
