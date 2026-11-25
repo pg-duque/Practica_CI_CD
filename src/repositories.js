@@ -32,7 +32,7 @@ function postgresRepository(connectionString) {
       )`);
     },
     async list() {
-      const result = await pool.query('SELECT id, title, done FROM tasks ORDER BY id');
+      const result = await pool.query('SELECT patata, title, done FROM tasks ORDER BY id');
       return result.rows;
     },
     async create({ title, done }) {
