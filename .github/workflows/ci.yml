@@ -42,11 +42,14 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
-      - uses: actions/upload-artifact@v4
+      - name: Ejecutar tests de cobertura
+        run: npm run coverage
+      - name: guardar reporte de cobertura
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: coverage/
-          if : always()
 
       # TODO: ejecutar npm run coverage
       # TODO: guardar coverage/ usando actions/upload-artifact@v4
